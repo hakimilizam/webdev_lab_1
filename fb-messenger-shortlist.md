@@ -110,3 +110,70 @@ Harga jual (SGD) =
 - Bandingkan hasilnya dengan harga pesaing SG di atas. Kalau harga awak lebih mahal daripada jenama tempatan SG, pembeli ada sebab untuk beli dari mereka.
 
 GST Singapura: penjual luar negara wajib daftar di bawah OVR hanya jika jualan global melebihi S$1 juta dan jualan B2C ke SG melebihi S$100,000 dalam 12 bulan (https://www.customs.gov.sg/businesses/customs-schemes-licences-framework/iras-schemes/overseas-vendor-registration-regime/). Semak semula bila jualan meningkat.
+
+## Analisis video ads: blouse labuh oversize (2 video, 2026-10-18)
+
+Dua video yang pengguna muat naik (dari ssstik.io). Pengguna sahkan ada izin pemilik untuk guna dan edit.
+
+| | Video A | Video B |
+|---|---|---|
+| Panjang | 40.9 saat | 64.2 saat |
+| Format | 720×1280 (9:16) | 720×1280 (9:16) |
+| Produk | Blouse/tunik labuh oversize, butang depan, lengan getah, hujung melengkung. Versi bercorak: bunga hitam-pink, krim, hijau zaitun, putih-ungu, biru royal, ikat merah | Produk sama, versi plain bertekstur: biru kelabu, biru royal, ungu lilac, hijau sage, fuchsia, hijau zaitun, peach, hijau zamrud |
+| Gaya | Host bercakap ke kamera (mikrofon headset), gaya live selling. Pakai dengan seluar putih | Sama, host yang sama |
+| Audio | Suara host bercakap berterusan, tiada muzik (dari spektrogram). Bahasa tidak dapat disahkan; transkripsi disekat di sini | Sama |
+| Watermark | "sue" | "syanatasya" |
+| Potongan | 5–6 babak panjang; potongan pertama pada 16 saat | Potongan pertama pada 4.7 saat |
+| Fade ke hitam | Setiap 7–8 saat (2.7, 10.0, 18.0, 23.1, 30.8, 36.2 s) | 6.3, 18.9, 26.5, 35.3, 45.3, 57.7 s |
+
+Kelemahan untuk ads:
+- Terlalu panjang (41 dan 64 saat). Ads biasanya 15–30 saat.
+- Tiada teks atas skrin, jadi tiada mesej bila ditonton tanpa bunyi.
+- Fade ke hitam setiap 7–8 saat memberi peluang penonton scroll pergi.
+- Suara asal mungkin menyebut harga atau kedai penjual. Itu mengelirukan pembeli SG.
+- Saat pertama tiada hook: hanya host mula bercakap.
+
+Babak terkuat:
+- B 4.3–5.9 s: host pusing, nampak belakang yang labuh. Sesuai sebagai hook gerakan.
+- B 42.4–43.3 s: host buka lengan blouse lebar, nampak potongan.
+- B 43.4–44.9 s: close-up tekstur kain.
+- A 1.0–2.5 s: close-up corak bunga.
+- B 20–37 s dan 59–60 s: host pegang dua warna serentak, sesuai untuk montaj warna.
+
+## Draf video yang dihasilkan
+
+Kedua-dua draf: 1080×1920, H.264 + AAC, tiada fade hitam, teks Bahasa Melayu di antara 14% atas dan 35% bawah skrin (safe zone Reels), tiada harga.
+
+Draf 1 (14.7 saat), fokus potongan dan kain:
+
+| Masa | Klip | Teks |
+|---|---|---|
+| 0–1.6 | B pusing | Cari blouse labuh yang longgar? |
+| 1.6–2.5 | B buka lengan | Potongan longgar, lengan lebar |
+| 2.5–4.0 | B tekstur kain | Tengok tekstur kain |
+| 4.0–5.5 | A corak bunga | Ada corak bunga juga |
+| 5.5–12.5 | B 5 warna plain | Banyak pilihan warna |
+| 12.5–14.7 | B host | Hantar ke Singapura / Tanya harga & saiz di Messenger |
+
+Draf 2 (22.6 saat), fokus pilihan plain dan corak:
+
+| Masa | Klip | Teks |
+|---|---|---|
+| 0–1.6 | B host berjalan | Blouse labuh untuk kerja & jalan-jalan |
+| 1.6–3.2 | B pusing | Labuh, tutup punggung |
+| 3.2–4.1 | B buka lengan | Potongan longgar |
+| 4.1–5.6 | B tekstur kain | Kain bertekstur |
+| 5.6–12.6 | B 5 warna plain | Pilihan warna plain |
+| 12.6–18.2 | A 4 corak | Pilihan corak bunga |
+| 18.2–19.8 | A host bunga hitam | Plain atau corak? |
+| 19.8–22.6 | B host | Hantar ke Singapura / Tanya harga & saiz di Messenger |
+
+Semua teks hanya menyebut apa yang nampak dalam video. Saya tidak tulis "ironless", "tak panas" atau "mesra wuduk" kerana belum disahkan oleh penjual. Tambah selepas penjual sahkan.
+
+Watermark "sue" dan "syanatasya" dikekalkan. Minta fail asal tanpa watermark daripada pemilik jika mahu ia tiada.
+
+Audio: draf disenyapkan (trek senyap). Tambah lagu yang dilesenkan untuk ads, contohnya dari Meta Sound Collection. Lagu trending TikTok tidak dilesenkan untuk ads Facebook.
+
+Belum ada: link TikTok Shop untuk blouse ini. Produk ini tiada dalam senarai pendek di atas.
+
+Skrip edit: `video/edit_ads.py` (ffmpeg). Cara guna: `python3 video/edit_ads.py <video_A.mp4> <video_B.mp4> <folder_output>`.
