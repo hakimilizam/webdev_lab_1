@@ -170,9 +170,28 @@ Draf 2 (22.6 saat), fokus pilihan plain dan corak:
 
 Semua teks hanya menyebut apa yang nampak dalam video. Saya tidak tulis "ironless", "tak panas" atau "mesra wuduk" kerana belum disahkan oleh penjual. Tambah selepas penjual sahkan.
 
-Watermark "sue" dan "syanatasya" dikekalkan. Minta fail asal tanpa watermark daripada pemilik jika mahu ia tiada.
+Draf 3 (71.4 saat), versi panjang gaya live selling, atas permintaan pengguna (video seminit lebih). Babak dikekalkan lebih lama supaya penonton nampak setiap warna dan corak:
 
-Audio: draf disenyapkan (trek senyap). Tambah lagu yang dilesenkan untuk ads, contohnya dari Meta Sound Collection. Lagu trending TikTok tidak dilesenkan untuk ads Facebook.
+| Masa | Klip | Teks |
+|---|---|---|
+| 0–1.8 | B pusing | Cari blouse labuh yang longgar? |
+| 1.8–6.8 | B host badan penuh | Potongan longgar, labuh tutup punggung |
+| 6.8–11.8 | B host | Lengan getah di pergelangan |
+| 11.8–15.3 | B buka lengan + tekstur kain | Tengok tekstur kain |
+| 15.3–32.3 | B 7 warna plain | Pilihan warna plain |
+| 32.3–37.8 | B fuchsia | Boleh hantar ke Singapura |
+| 37.8–44.8 | A bunga hitam | Ada versi corak bunga |
+| 44.8–62.7 | A 5 corak | Pilihan corak bunga |
+| 62.7–66.4 | A ikat merah + bunga hitam | Plain atau corak? |
+| 66.4–71.4 | B host | Hantar ke Singapura / Tanya harga & saiz di Messenger |
+
+Draf 3 ada dua versi audio:
+- `draf3_71s_suara.mp4`: suara host asal, dengan fade pendek di setiap potongan dan kelantangan dinormalkan (−16.8 LUFS). Dengar dulu: jika host sebut harga RM, nama kedai atau "beg kuning", guna versi senyap.
+- `draf3_71s_senyap.mp4`: trek senyap, untuk ditambah lagu sendiri.
+
+Watermark: "syanatasya" (video B) dibuang dengan penapis delogo dalam semua draf, atas permintaan pengguna yang ada izin pemilik. Kawasan itu mungkin nampak sedikit kabur pada latar belakang pokok. Watermark "sue" (video A) masih ada.
+
+Audio untuk versi senyap: tambah lagu yang dilesenkan untuk ads, contohnya dari Meta Sound Collection. Lagu trending TikTok tidak dilesenkan untuk ads Facebook.
 
 Belum ada: link TikTok Shop untuk blouse ini. Produk ini tiada dalam senarai pendek di atas.
 
