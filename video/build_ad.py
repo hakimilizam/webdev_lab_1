@@ -18,8 +18,8 @@ FPS, W, H = 30, 1080, 1920
 XFADE_FRAMES = 14  # plain -> print section transition
 SR = 48000
 
-PRE = {  # per-source fixes before scaling: video B carries a static "syanatasya" watermark
-    "A": "",
+PRE = {  # per-source fixes before scaling: static watermarks ("sue" in A, "syanatasya" in B)
+    "A": "delogo=x=310:y=1029:w=46:h=34,",
     "B": "delogo=x=592:y=1000:w=118:h=44,",
 }
 GRADE = {  # light denoise, upscale, sharpen, gentle contrast; B is cooler so warm it slightly
@@ -203,15 +203,15 @@ def build_ass(timeline, total_sec, print_start):
         add(start, end, layer, f"{{\\an5{slide(x, y)}\\fad(160,160)\\bord0\\shad0\\1c{ass_colour(colour)}\\1a&H{alpha:02X}&{extra}\\p1}}{path}{{\\p0}}")
 
     def badge(start, end, text, y=880):
-        size = 44
-        w = int(text_w(text, "Poppins_600SemiBold.ttf", size) + 64)
-        shape(start, end, 2, 540, y, rrect(w, 84, 42), "#FFFFFF", 0x14)
+        size = 52
+        w = int(text_w(text, "Poppins_600SemiBold.ttf", size) + 72)
+        shape(start, end, 2, 540, y, rrect(w, 98, 49), "#FFFFFF", 0x14)
         add(start, end, 3, f"{{\\an5{slide(540, y)}\\fad(160,160)\\fnPoppins SemiBold\\fs{size}\\bord0\\shad0\\1c{ass_colour('#1B1B1F')}}}{text}")
 
     # Hook title, 0 - 2.2 s: two lines slide up in turn, accent bar grows from the centre
-    add(0.0, 2.2, 4, f"{{\\an5{slide(540, 720, 28, 260)}\\fad(180,180)\\fnPoppins ExtraBold\\fs96\\bord0\\shad3\\4a&H90&}}Blouse labuh")
-    add(0.12, 2.2, 4, f"{{\\an5{slide(540, 826, 28, 260)}\\fad(180,180)\\fnPoppins ExtraBold\\fs96\\bord0\\shad3\\4a&H90&\\1c{ass_colour('#FFD9A3')}}}yang tak senteng")
-    add(0.25, 2.2, 3, f"{{\\an5\\pos(540,900)\\fad(120,180)\\bord0\\shad0\\1c{ass_colour('#FFD9A3')}\\fscx0\\t(0,320,0.6,\\fscx100)\\p1}}{rrect(220, 10, 5)}{{\\p0}}")
+    add(0.0, 2.2, 4, f"{{\\an5{slide(540, 712, 28, 260)}\\fad(180,180)\\fnPoppins ExtraBold\\fs100\\bord0\\shad3\\4a&H90&}}Blouse labuh")
+    add(0.12, 2.2, 4, f"{{\\an5{slide(540, 824, 28, 260)}\\fad(180,180)\\fnPoppins ExtraBold\\fs100\\bord0\\shad3\\4a&H90&\\1c{ass_colour('#FFD9A3')}}}yang tak senteng")
+    add(0.25, 2.2, 3, f"{{\\an5\\pos(540,904)\\fad(120,180)\\bord0\\shad0\\1c{ass_colour('#FFD9A3')}\\fscx0\\t(0,320,0.6,\\fscx100)\\p1}}{rrect(240, 12, 6)}{{\\p0}}")
 
     for cid, items in SUBS.items():
         for a, b, text in items:
@@ -226,34 +226,34 @@ def build_ass(timeline, total_sec, print_start):
     for cid, a, b, name in PILLS:
         t0 = timeline[cid] + a
         t1 = timeline[cid] + b
-        tw = text_w(name, "Poppins_600SemiBold.ttf", 44)
-        w = int(tw + 64 + 56)
+        tw = text_w(name, "Poppins_600SemiBold.ttf", 52)
+        w = int(tw + 72 + 64)
         left = 540 - w / 2
-        shape(t0, t1, 2, 540, 880, rrect(w, 84, 42), "#111114", 0x40)
-        add(t0, t1, 3, f"{{\\an5{slide(int(left + 50), 880)}\\fad(160,160)\\bord3\\3c&HFFFFFF&\\shad0\\1c{ass_colour(COLOURS[name])}\\p1}}{circle(18)}{{\\p0}}")
-        add(t0, t1, 3, f"{{\\an4{slide(int(left + 84), 880)}\\fad(160,160)\\fnPoppins SemiBold\\fs44\\bord0\\shad0}}{name}")
+        shape(t0, t1, 2, 540, 880, rrect(w, 98, 49), "#111114", 0x40)
+        add(t0, t1, 3, f"{{\\an5{slide(int(left + 58), 880)}\\fad(160,160)\\bord3\\3c&HFFFFFF&\\shad0\\1c{ass_colour(COLOURS[name])}\\p1}}{circle(22)}{{\\p0}}")
+        add(t0, t1, 3, f"{{\\an4{slide(int(left + 100), 880)}\\fad(160,160)\\fnPoppins SemiBold\\fs52\\bord0\\shad0}}{name}")
 
     # Summary grid over M1: all eight colours
     g0, g1 = timeline["M1"] + 0.2, timeline["M1"] + 5.0
-    shape(g0, g1, 2, 540, 900, rrect(940, 330, 36), "#111114", 0x48)
-    add(g0, g1, 3, f"{{\\an5{slide(540, 790)}\\fad(160,160)\\fnPoppins SemiBold\\fs46\\bord0\\shad0}}Pilihan warna plain")
+    shape(g0, g1, 2, 540, 900, rrect(980, 390, 40), "#111114", 0x48)
+    add(g0, g1, 3, f"{{\\an5{slide(540, 762)}\\fad(160,160)\\fnPoppins SemiBold\\fs54\\bord0\\shad0}}Pilihan warna plain")
     for i, (name, hexc) in enumerate(COLOURS.items()):
         col, row = i % 4, i // 4
-        x, y = 195 + col * 230, 870 + row * 120
+        x, y = 180 + col * 240, 852 + row * 136
         d = 0.15 + i * 0.07
-        add(g0 + d, g1, 3, f"{{\\an5{slide(x, y, 16, 200)}\\fad(140,160)\\bord3\\3c&HFFFFFF&\\shad0\\1c{ass_colour(hexc)}\\p1}}{circle(24)}{{\\p0}}")
-        add(g0 + d, g1, 3, f"{{\\an5{slide(x, y + 50, 16, 200)}\\fad(140,160)\\fnPoppins Medium\\fs30\\bord0\\shad0}}{name}")
+        add(g0 + d, g1, 3, f"{{\\an5{slide(x, y, 16, 200)}\\fad(140,160)\\bord3\\3c&HFFFFFF&\\shad0\\1c{ass_colour(hexc)}\\p1}}{circle(28)}{{\\p0}}")
+        add(g0 + d, g1, 3, f"{{\\an5{slide(x, y + 60, 16, 200)}\\fad(140,160)\\fnPoppins Medium\\fs36\\bord0\\shad0}}{name}")
 
     # End card
     e0 = timeline["END"]
     e1 = total_sec
     add(e0, e1, 1, f"{{\\an7\\pos(0,0)\\fad(260,0)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}}m 0 0 l {W} 0 l {W} {H} l 0 {H}{{\\p0}}")
     add(e0 + 0.15, e1, 4, f"{{\\an5{slide(540, 760, 28, 280)}\\fad(200,0)\\fnPoppins ExtraBold\\fs88\\bord0\\shad0}}Hantar ke Singapura")
-    add(e0 + 0.3, e1, 4, f"{{\\an5{slide(540, 850, 20, 260)}\\fad(200,0)\\fnPoppins Medium\\fs42\\bord0\\shad0\\1c{ass_colour('#E6E6EA')}}}Free size · Labuh 35 inci · Kain sejuk")
+    add(e0 + 0.3, e1, 4, f"{{\\an5{slide(540, 856, 20, 260)}\\fad(200,0)\\fnPoppins Medium\\fs48\\bord0\\shad0\\1c{ass_colour('#E6E6EA')}}}Free size · Labuh 35 inci · Kain sejuk")
     pulse = "".join(f"\\t({ms},{ms + 260},\\fscx105\\fscy105)\\t({ms + 260},{ms + 520},\\fscx100\\fscy100)" for ms in (900, 2100, 3300))
-    add(e0 + 0.45, e1, 4, f"{{\\an5{slide(540, 1010, 24, 260)}\\fad(200,0)\\bord0\\shad0\\1c{ass_colour('#1877F2')}{pulse}\\p1}}{rrect(700, 124, 62)}{{\\p0}}")
-    add(e0 + 0.45, e1, 5, f"{{\\an5{slide(540, 1010, 24, 260)}\\fad(200,0)\\fnPoppins SemiBold\\fs48\\bord0\\shad0{pulse}}}Tanya harga & saiz")
-    add(e0 + 0.6, e1, 4, f"{{\\an5{slide(540, 1112, 16, 240)}\\fad(200,0)\\fnPoppins Medium\\fs34\\bord0\\shad0\\1c{ass_colour('#E6E6EA')}}}Tekan “Send Message”")
+    add(e0 + 0.45, e1, 4, f"{{\\an5{slide(540, 1024, 24, 260)}\\fad(200,0)\\bord0\\shad0\\1c{ass_colour('#1877F2')}{pulse}\\p1}}{rrect(760, 140, 70)}{{\\p0}}")
+    add(e0 + 0.45, e1, 5, f"{{\\an5{slide(540, 1024, 24, 260)}\\fad(200,0)\\fnPoppins SemiBold\\fs56\\bord0\\shad0{pulse}}}Tanya harga & saiz")
+    add(e0 + 0.6, e1, 4, f"{{\\an5{slide(540, 1140, 16, 240)}\\fad(200,0)\\fnPoppins Medium\\fs42\\bord0\\shad0\\1c{ass_colour('#E6E6EA')}}}Tekan “Send Message”")
 
     header = f"""[Script Info]
 ScriptType: v4.00+
@@ -265,7 +265,7 @@ ScaledBorderAndShadow: yes
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
 Style: Default,Poppins SemiBold,44,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,5,0,0,0,1
-Style: Sub,Poppins SemiBold,58,&H00FFFFFF,&H00FFFFFF,&H50000000,&H96000000,0,0,0,0,100,100,0,0,1,3.2,1.5,2,90,90,700,1
+Style: Sub,Poppins SemiBold,66,&H00FFFFFF,&H00FFFFFF,&H50000000,&H96000000,0,0,0,0,100,100,0,0,1,3.6,1.5,2,80,80,690,1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
