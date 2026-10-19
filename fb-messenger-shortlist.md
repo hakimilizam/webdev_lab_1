@@ -189,10 +189,44 @@ Draf 3 ada dua versi audio:
 - `draf3_71s_suara.mp4`: suara host asal, dengan fade pendek di setiap potongan dan kelantangan dinormalkan (−16.8 LUFS). Dengar dulu: jika host sebut harga RM, nama kedai atau "beg kuning", guna versi senyap.
 - `draf3_71s_senyap.mp4`: trek senyap, untuk ditambah lagu sendiri.
 
-Watermark: "syanatasya" (video B) dibuang dengan penapis delogo dalam semua draf, atas permintaan pengguna yang ada izin pemilik. Kawasan itu mungkin nampak sedikit kabur pada latar belakang pokok. Watermark "sue" (video A) masih ada.
+Watermark: "syanatasya" (video B) dibuang dengan penapis delogo dalam semua draf, atas permintaan pengguna yang ada izin pemilik. Kawasan itu mungkin nampak sedikit kabur pada latar belakang pokok. Watermark "sue" (video A) masih ada dalam draf 1–3, tetapi dibuang dalam draf 4.
 
 Audio untuk versi senyap: tambah lagu yang dilesenkan untuk ads, contohnya dari Meta Sound Collection. Lagu trending TikTok tidak dilesenkan untuk ads Facebook.
 
 Belum ada: link TikTok Shop untuk blouse ini. Produk ini tiada dalam senarai pendek di atas.
 
 Skrip edit: `video/edit_ads.py` (ffmpeg). Cara guna: `python3 video/edit_ads.py <video_A.mp4> <video_B.mp4> <folder_output>`.
+
+## Draf 4: suara host + lagu asal + animasi (62.1 saat)
+
+Fail: `video/output/draf4_lagu_suara.mp4`. 1080×1920, H.264 + AAC 192k. Dibina dengan `video/build_ad.py`, dan lagu dengan `video/compose_music.py`.
+
+Transkrip: suara host ditranskrip dengan Whisper small (sherpa-onnx), kemudian disemak semula setiap segmen. Host bercakap Bahasa Melayu dan tidak menyebut harga atau nama kedai. Bahagian "komen kaler maroon" dan "tinggal tak banyak dah" dibuang kerana itu ayat untuk TikTok live dan stok semasa.
+
+Susunan:
+
+| Masa | Isi | Teks atas skrin |
+|---|---|---|
+| 0–5.9 | Host: "Labuh baju akak adalah 35. Akak tinggi 1.70 pun tak senteng." | Hook "Blouse labuh yang tak senteng", badge Labuh 35 inci, Model tinggi 170 cm |
+| 5.9–12.1 | "Nak pakai dengan palazzo boleh, … skirt pun cantik. Free size dari dada 36 sampai 53." | Badge Free size · Dada 36–53 inci |
+| 12.1–14.7 | "Memang cantik, kain dia sejuk, tak panas, terletak lawa." | Badge Kain sejuk, tak panas |
+| 14.7–25.6 | Host sebut warna: silver, royal blue, lavender, maroon, mint green, army, oren susu | Cip warna muncul bila setiap warna disebut |
+| 25.6–30.6 | Muzik, warna emerald dan oren susu | Grid 8 warna plain |
+| 30.6–33.4 | Muzik, warna maroon | Badge Penghantaran ke Singapura |
+| 33.4 | Transisi smooth ke versi corak | |
+| 32.9–39.4 | "Saiz dari dada 36 sampai 52." | Badge Versi corak bunga, Free size · Dada 36–52 inci |
+| 39.4–57.7 | Muzik dan suara host: "Putih dia, putih off-white. Yang kain dia sejuk." | Badge Pilihan corak bunga |
+| 57.7–62.1 | Kad penutup | Hantar ke Singapura, butang "Tanya harga & saiz", Tekan "Send Message" |
+
+Teknikal:
+- Watermark "syanatasya" (B) dan "sue" (A) dibuang dengan delogo.
+- Fade ke hitam dalam klip yang bersuara ditutup dengan cutaway (pusing, close-up kain), sementara suara terus berjalan.
+- Gred: denoise ringan (hqdn3d), upscale lanczos ke 1080p, tajamkan (CAS), kontras +4%, saturasi +6%. Video B dipanaskan sedikit supaya sepadan dengan video A.
+- Teks: fon Poppins (lesen OFL), animasi naik perlahan + fade. Butang penutup berdenyut perlahan. Tiada emoji atau kesan glitch.
+- Audio: suara dibersihkan (highpass, kompresor, loudnorm). Lagu asal (chill pop, F major, 100 BPM, e-piano, pad, bass, perkusi ringan) turun automatik bila host bercakap (sidechain). Akhir −17.7 LUFS.
+- Lip-sync disemak dengan korelasi audio: offset 5–11 ms.
+
+Had yang perlu tahu:
+- Video asal 720p dari TikTok. Upscale ke 1080p menajamkan teks dan tepi, tetapi tidak menambah butiran yang tiada dalam sumber.
+- Lagu digubah dengan kod, bukan dirakam di studio. Ia bebas hak cipta, tetapi bunyinya ringkas. Untuk lagu yang lebih "mahal", ganti dengan lagu berlesen.
+- Warna yang disebut host ("maroon" untuk baju merah-fuchsia, "silver" untuk biru kelabu) dikekalkan ikut sebutan dia.
